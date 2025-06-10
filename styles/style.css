@@ -40,7 +40,6 @@ body {
   background: var(--color-bg);
 }
 
-/* доступно-скрытый текст */
 .visually-hidden {
   position: absolute;
   inline-size: 1px;
@@ -51,7 +50,6 @@ body {
   white-space: nowrap;
 }
 
-/* обнуляем отступы блоковых элементов */
 h1,
 h2,
 h3,
@@ -71,10 +69,26 @@ ol {
   list-style: none;
 }
 
-/* единый кастом-фокус */
 :focus-visible {
   outline: 1px solid var(--color-white);
   outline-offset: 1px;
+}
+
+.search-form__checkbox:focus-visible {
+  outline: none;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  transform: scale(1);
+}
+
+.search-form__label {
+  position: relative;
+}
+
+.search-form__label:focus-within {
+  outline: 1px solid var(--color-white);
+  outline-offset: 2px;
 }
 
 /* =========================================================
@@ -93,20 +107,32 @@ ol {
   align-items: flex-end;
   gap: 30px;
   margin: 0 auto;
+  height: 526px;
 }
 
 .content__details {
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 22px;
   inline-size: 399px;
 }
 
-/* вертикальный список с прокруткой */
 .content__list {
   position: relative;
   max-block-size: 298px;
   overflow-y: auto;
+  height: 100%;
+}
+
+.content__list--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  min-block-size: 298px;
 }
 
 .content__list-item:not(:last-child) {
@@ -116,7 +142,6 @@ ol {
 /* =========================================================
    3. Компоненты
 ========================================================= */
-/* ----- Видео на странице результата ----- */
 .result__video-container {
   position: relative;
   inline-size: calc(var(--video-w) * 1px);
@@ -130,7 +155,6 @@ ol {
   object-position: center;
 }
 
-/* ----- Карточка видео в списке ----- */
 .content__video-card {
   display: flex;
 }
@@ -153,6 +177,11 @@ ol {
 
 .content__video-card-description {
   line-height: 120%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
 }
 
 .content__video-card-description-container {
@@ -160,7 +189,6 @@ ol {
   min-inline-size: 0;
 }
 
-/* ----- Ссылка-обертка карточки ----- */
 .content__card-link {
   display: block;
   padding: 2px;
@@ -177,7 +205,6 @@ ol {
   text-decoration: underline;
 }
 
-/* ----- Заголовки ----- */
 .title {
   font: 700 75px / 70.5px var(--font-heading);
   text-transform: uppercase;
@@ -187,7 +214,6 @@ ol {
   color: var(--color-accent);
 }
 
-/* ----- Форма поиска ----- */
 .search-form {
   display: flex;
   justify-content: space-between;
@@ -206,7 +232,6 @@ ol {
   font-size: var(--fs-base);
 }
 
-/* label + текстовое поле */
 .search-form__label {
   display: flex;
   align-items: center;
@@ -254,11 +279,6 @@ ol {
   transition: transform 0.15s ease;
 }
 
-.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
-  transform: scale(1);
-}
-
-/* ----- Кнопки ----- */
 .button {
   padding: 5px 72.5px;
   border: 1px solid currentColor;
