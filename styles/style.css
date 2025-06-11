@@ -104,7 +104,6 @@ ol {
 
 .content {
   display: flex;
-  align-items: flex-end;
   gap: 30px;
   margin: 0 auto;
   height: 526px;
@@ -142,6 +141,10 @@ ol {
 /* =========================================================
    3. Компоненты
 ========================================================= */
+.result {
+  padding-top: 72px;
+}
+
 .result__video-container {
   position: relative;
   inline-size: calc(var(--video-w) * 1px);
